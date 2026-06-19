@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G&B Growth – Growth Operators</title>
+  <meta name="description" content="G&B Growth accompagne les créateurs de contenu et les propriétaires de communautés à monétiser leur audience. Stratégie marketing, tunnels de ventes, publicité, hébergement et bien plus."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --black:   #1a1a1a;
+      --orange:  #C9502A;
+      --cream:   #F0EDE8;
+      --gray:    #888888;
+      --white:   #ffffff;
+      --dark-bg: #111111;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-logo-text .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .nav-logo-text .tagline {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--gray);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: #b3441f !important; transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--black);
+      transition: 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+    .hero-bg-shape {
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 55%;
+      height: 120%;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+      clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+    .hero-accent {
+      position: absolute;
+      bottom: 10%;
+      left: 30%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(201,80,42,0.15) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,80,42,0.15);
+      border: 1px solid rgba(201,80,42,0.4);
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero-title span { color: var(--orange); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 44px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: #b3441f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,80,42,0.4);
+    }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      letter-spacing: 0.03em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--orange);
+    }
+    .stat-item .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== SECTIONS COMMON ===== */
+    section { padding: 100px 5%; }
+    .section-tag {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+    .section-header { margin-bottom: 64px; }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ===== ABOUT / PROBLEME ===== */
+    #about {
+      background: var(--cream);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    }
+    .about-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .about-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    .about-card-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 24px 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      max-width: 200px;
+      box-shadow: 0 8px 24px rgba(201,80,42,0.3);
+    }
+    .about-card-accent span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .about-list {
+      list-style: none;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.5;
+    }
+    .about-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: var(--white);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 36px 30px;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--orange);
+      transition: height 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+      border-color: transparent;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--cream);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon {
+      background: rgba(201,80,42,0.1);
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ===== METHODE ===== */
+    #methode {
+      background: var(--dark-bg);
+      color: var(--white);
+    }
+    #methode .section-title { color: var(--white); }
+    #methode .section-sub { color: rgba(255,255,255,0.55); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,80,42,0.5), transparent);
+    }
+    .step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--white);
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .step p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ===== WHY US ===== */
+    #why {
+      background: var(--cream);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .why-item-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--orange);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .why-item-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .why-item-text p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .why-visual {
+      background: var(--black);
+      border-radius: 16px;
+      padding: 48px 40px;
+      color: var(--white);
+    }
+    .why-visual .big-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .why-visual p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .founders {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .founder {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .founder-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+    .founder-info .name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .founder-info .role {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--white);
+    }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-item-icon {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      background: var(--cream);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-item-text .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .contact-item-text .value {
+      font-size: 0.95rem;
+      color: var(--black);
+      font-weight: 500;
+    }
+    .contact-item-text a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+    .contact-item-text a:hover { text-decoration: underline; }
+    .contact-form {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 48px 40px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--black);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(201,80,42,0.1);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 15px 24px;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .form-submit:hover {
+      background: #b3441f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,80,42,0.35);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-bg);
+      color: rgba(255,255,255,0.5);
+      padding: 48px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .footer-tagline {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    footer p { font-size: 0.82rem; }
+    footer a { color: var(--orange); text-decoration: none; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--white);
+        padding: 24px 5%;
+        border-bottom: 1px solid #eee;
+        gap: 20px;
+        z-index: 99;
+      }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .steps::before { display: none; }
+      .about-grid, .why-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 28px; }
+      .about-card-accent { position: static; margin-top: 20px; }
+    }
+    @media (max-width: 600px) {
+      .steps { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons a { text-align: center; }
+      section { padding: 72px 5%; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Simplified GB logo -->
+      <path d="M 60 10 C 60 10, 95 10, 95 35 C 95 50, 80 55, 70 55 L 85 70 L 60 70 C 60 70, 30 70, 30 50 C 30 40, 38 35, 45 33 C 38 30, 30 24, 30 14 C 30 -2, 50 0, 60 10 Z" fill="#1a1a1a"/>
+      <circle cx="44" cy="34" r="14" fill="#F0EDE8"/>
+      <rect x="40" y="30" width="8" height="12" rx="1" fill="#1a1a1a"/>
+      <polygon points="72,29 87,37 72,45" fill="#C9502A"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="brand">G&amp;B Growth</span>
+      <span class="tagline">Growth Operators</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">Notre approche</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#methode">Méthode</a></li>
+    <li><a href="#why">Pourquoi nous</a></li>
+    <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Growth Operators · Paris</div>
+    <h1 class="hero-title">
+      Transformez votre audience<br>en <span>machine à revenus</span>
+    </h1>
+    <p class="hero-sub">
+      Vous avez une communauté engagée sur les réseaux sociaux. Nous construisons avec vous l'infrastructure complète pour la monétiser : stratégie, tunnels, publicité, produits & hébergement.
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+      <a href="#services" class="btn-secondary">Découvrir nos services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">A→Z</div>
+        <div class="stat-label">Accompagnement complet</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">360°</div>
+        <div class="stat-label">Vision stratégique</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">ROI</div>
+        <div class="stat-label">Focalisé résultats</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <span class="section-tag">Notre mission</span>
+      <h2 class="section-title">Vous avez l'audience.<br>Nous avons la stratégie.</h2>
+      <p class="section-sub">
+        Trop de créateurs et d'influenceurs laissent des milliers d'euros sur la table faute d'une structure adaptée. G&B Growth est né de ce constat : une communauté engagée est le bien le plus précieux de l'économie digitale — encore faut-il savoir l'activer.
+      </p>
+      <ul class="about-list">
+        <li>Diagnostic complet de votre audience et de son potentiel de monétisation</li>
+        <li>Conception d'un business model taillé pour votre marché et vos abonnés</li>
+        <li>Déploiement de l'infrastructure technique et marketing de A à Z</li>
+        <li>Pilotage des performances et optimisation continue pour maximiser le ROI</li>
+      </ul>
+    </div>
+    <div class="about-visual fade-in">
+      <div class="about-card">
+        <div class="about-card-icon">🚀</div>
+        <h3>De la communauté au business</h3>
+        <p>Nous prenons en charge l'intégralité du parcours de monétisation, depuis la stratégie jusqu'à la mise en œuvre opérationnelle, pour que vous puissiez vous concentrer sur ce que vous faites le mieux : créer du contenu.</p>
+      </div>
+      <div class="about-card-accent">
+        Structure complète &amp; clé en main
+        <span>De la stratégie aux premiers revenus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header text-center fade-in">
+    <span class="section-tag">Ce que nous faisons</span>
+    <h2 class="section-title">Une offre complète<br>pour chaque étape de votre croissance</h2>
+    <p class="section-sub">Chaque service est pensé comme une pièce d'un système global cohérent, conçu pour convertir votre audience en chiffre d'affaires durable.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">🎯</div>
+      <h3>Stratégie Marketing</h3>
+      <p>Élaboration d'une stratégie de contenu et de monétisation personnalisée, alignée sur votre audience et vos objectifs business. Positionnement, messaging et feuille de route.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">💡</div>
+      <h3>Business Model Design</h3>
+      <p>Identification des meilleures sources de revenus pour votre profil : formations, memberships, coaching, produits numériques, affiliation, marque blanche, SaaS communautaire.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🔁</div>
+      <h3>Tunnels de Ventes</h3>
+      <p>Conception et intégration de tunnels de vente optimisés : landing pages, séquences email, upsells, downsells et automatisations pour maximiser chaque conversion.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">📡</div>
+      <h3>Tunnels d'Acquisition</h3>
+      <p>Construction de systèmes d'acquisition organique et payant : lead magnets, formulaires, webinaires automatisés, challenges et séquences de nurturing pour alimenter votre pipeline.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">📣</div>
+      <h3>Publicité (Ads)</h3>
+      <p>Gestion complète de vos campagnes publicitaires sur Meta Ads, Google Ads et TikTok Ads. Création des visuels, ciblage, A/B testing et optimisation continue du ROAS.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">📦</div>
+      <h3>Développement Produit</h3>
+      <p>Co-création et structuration de vos offres : formations en ligne, programmes de coaching, templates, ressources premium. De l'idée au lancement, nous gérons la production.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">⚙️</div>
+      <h3>Hébergement & Tech</h3>
+      <p>Mise en place et maintenance de votre stack technologique : plateformes de cours (Teachable, Kajabi, Systeme.io), espaces membres, CRM, outils d'automatisation et intégrations.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">📊</div>
+      <h3>Analytics & Reporting</h3>
+      <p>Tableaux de bord personnalisés, suivi des KPIs clés (CAC, LTV, taux de conversion, rétention) et reporting mensuel pour prendre des décisions basées sur la data.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🤝</div>
+      <h3>Growth Management</h3>
+      <p>Pilotage opérationnel de votre croissance au quotidien : gestion des équipes, coordination des prestataires, optimisation des processus et scaling de vos revenus récurrents.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section id="methode">
+  <div class="section-header text-center fade-in">
+    <span class="section-tag">Notre méthode</span>
+    <h2 class="section-title" style="color:white;">Un process éprouvé<br>en 4 étapes</h2>
+    <p class="section-sub">De l'audit initial au scaling, nous vous accompagnons avec rigueur à chaque phase de votre développement.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">1</div>
+      <h4>Audit &amp; Diagnostic</h4>
+      <p>Analyse approfondie de votre audience, de vos contenus, de vos revenus actuels et de votre potentiel inexploité.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">2</div>
+      <h4>Stratégie &amp; Plan</h4>
+      <p>Conception de votre business model, de votre offre, et d'une feuille de route claire pour atteindre vos objectifs.</p>
+    </div>
+    <div class="step fade-in">
