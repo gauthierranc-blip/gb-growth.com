@@ -195,9 +195,8 @@ footer a:hover{color:var(--coral)}
 
             <div class="field" id="f-projet">
               <label for="projet">Votre projet</label>
-              <textarea id="projet" name="projet" maxlength="1200" placeholder="Ce que vous vendez, à qui, et ce qui bloque aujourd'hui. Quelques lignes suffisent — les chiffres aident beaucoup."></textarea>
-              <p class="err" id="e-projet">Décrivez votre situation en quelques lignes (40 caractères minimum).</p>
-              <p class="count"><span id="cnt">0</span> / 1200</p>
+              <textarea id="projet" name="projet" placeholder="Ce que vous vendez, à qui, et ce qui bloque aujourd'hui. Quelques lignes suffisent — les chiffres aident beaucoup."></textarea>
+              <p class="err" id="e-projet">Ce champ nous sert à préparer l'appel.</p>
             </div>
 
             <button type="submit" class="submit" id="go">
@@ -223,13 +222,13 @@ footer a:hover{color:var(--coral)}
 <script>
 /* ==================================================================
    RÉGLAGES
-   CALENDLY_URL  : lien du calendrier, alimenté avec les réponses.
-   FORM_ENDPOINT : optionnel. Renseigné, chaque envoi est aussi
-                   transmis là (Formspree, Web3Forms…) pour recevoir
-                   les leads même si la personne ne réserve pas.
+   CALENDLY_URL   : lien du calendrier, alimenté avec les réponses.
+   WEB3FORMS_KEY  : clé d'accès Web3Forms. Renseignée, chaque envoi
+                    arrive aussi par e-mail, même si la personne
+                    abandonne avant de réserver son créneau.
 ================================================================== */
-var CALENDLY_URL  = "https://calendly.com/gb-growth/appel-decouverte-gb-growth";
-var FORM_ENDPOINT = "";
+var CALENDLY_URL  = "https://calendly.com/gauthier-ranc-gb-growth/appel-decouverte-gb-growth";
+var WEB3FORMS_KEY = "";
 
 (function () {
   var PAYS_FREQ = [
@@ -295,8 +294,6 @@ var FORM_ENDPOINT = "";
   if (y) y.textContent = new Date().getFullYear();
 
   var projet = document.getElementById("projet");
-  var cnt = document.getElementById("cnt");
-  projet.addEventListener("input", function(){ cnt.textContent = projet.value.length; });
 
   function nomPays(){
     var o = sel.options[sel.selectedIndex];
@@ -309,7 +306,7 @@ var FORM_ENDPOINT = "";
     nom:     function(v){ return v.trim().length >= 2; },
     email:   function(v){ return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim()); },
     tel:     function(v){ return v.replace(/[^0-9]/g, "").length >= 6; },
-    projet:  function(v){ return v.trim().length >= 40; }
+    projet:  function(v){ return v.trim().length > 0; }
   };
 
   function marque(id, ok){
@@ -375,14 +372,26 @@ var FORM_ENDPOINT = "";
       window.location.href = u.toString();
     }
 
-    if (!FORM_ENDPOINT) { versCalendly(); return; }
+    if (!WEB3FORMS_KEY) { versCalendly(); return; }
 
     var fini = false;
     var secours = setTimeout(function(){ if (!fini) { fini = true; versCalendly(); } }, 4000);
-    fetch(FORM_ENDPOINT, {
+    fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: "Nouvelle demande de rendez-vous — " + data.prenom + " " + data.nom,
+        from_name: "Site gb-growth.com",
+        replyto: data.email,
+        Prenom: data.prenom,
+        Nom: data.nom,
+        Email: data.email,
+        Telephone: data.telephone,
+        Pays: data.pays,
+        Projet: data.projet,
+        Source: data.source
+      })
     }).catch(function(){}).then(function(){
       if (!fini) { fini = true; clearTimeout(secours); versCalendly(); }
     });
