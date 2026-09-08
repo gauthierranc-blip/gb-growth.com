@@ -374,12 +374,10 @@ html{scroll-behavior:auto}}
         <article class="founder rv">
           <span class="name">Gauthier Ranc</span>
           <span class="role">Co-fondateur</span>
-          <p>[À compléter : parcours en une ou deux phrases — d'où tu viens, ce que tu prends en charge chez G&amp;B Growth, et un fait concret qui installe la crédibilité.]</p>
         </article>
         <article class="founder rv">
           <span class="name">Baptiste Tessier</span>
           <span class="role">Co-fondateur</span>
-          <p>[À compléter : même format, deux phrases maximum.]</p>
         </article>
       </div>
     </div>
@@ -453,20 +451,18 @@ html{scroll-behavior:auto}}
 
 <script>
 /* ------------------------------------------------------------------
-   RÉGLAGES — modifie uniquement cette ligne quand ton lien est prêt.
-   Exemple : "https://calendly.com/gb-growth/30min"
+   RÉGLAGES
+   BOOKING_PAGE : page de qualification qui précède le calendrier.
 ------------------------------------------------------------------ */
-var CALENDAR_URL = "https://calendly.com/gauthier-ranc-gb-growth/appel-decouverte-gb-growth";
+var BOOKING_PAGE = "reserver.html";
 
 (function () {
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  if (CALENDAR_URL) {
+  if (BOOKING_PAGE) {
     document.querySelectorAll('a[href="#rdv"], #cta-calendar').forEach(function (a) {
-      a.setAttribute("href", CALENDAR_URL);
-      a.setAttribute("target", "_blank");
-      a.setAttribute("rel", "noopener");
+      a.setAttribute("href", BOOKING_PAGE);
     });
   }
 

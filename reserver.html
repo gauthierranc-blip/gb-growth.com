@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réserver un appel — G&amp;B Growth</title>
+<meta name="description" content="Quelques informations avant de choisir votre créneau. Trente minutes pour comprendre votre situation et vous dire si nous pouvons y changer quelque chose.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141210'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23FBF8F4' text-anchor='middle'%3EG%3Ctspan fill='%23E05A3C'%3E%26%3C/tspan%3EB%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#141210;--ink-2:#403931;--ink-3:#6B6157;
+  --cream:#FBF8F4;--paper:#FFFFFF;
+  --coral:#D9522F;--coral-dark:#C0431F;--coral-tint:#FBEDE8;
+  --line:#E7DFD5;--line-2:#F0EAE2;
+  --err:#B3341A;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+/* header */
+header.top{border-bottom:1px solid var(--line);background:rgba(251,248,244,.9);
+  backdrop-filter:saturate(180%) blur(10px);position:sticky;top:0;z-index:20}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand .mark{width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--cream);
+  font-family:var(--serif);font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
+.brand .mark span{color:var(--coral)}
+.brand .word{font-family:var(--serif);font-size:18px;line-height:1}
+.brand .sub{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:3px;font-weight:600}
+.back{font-size:14.5px;color:var(--ink-3);text-decoration:none}
+.back:hover{color:var(--coral)}
+
+/* steps */
+.steps{display:flex;align-items:center;gap:10px;margin:0 0 30px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-3)}
+.step .n{width:23px;height:23px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex:none}
+.step.on{color:var(--ink);font-weight:500}
+.step.on .n{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.step-sep{width:26px;height:1px;background:var(--line)}
+
+/* layout */
+main{padding:clamp(36px,5vw,60px) 0 90px}
+.grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(32px,5vw,64px);align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:36px}}
+.aside{position:sticky;top:104px}
+@media(max-width:900px){.aside{position:static}}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);
+  line-height:1.14;margin:0 0 18px;letter-spacing:-.01em}
+.aside .lead{color:var(--ink-2);margin:0 0 32px;font-size:17px}
+.next{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.next li{padding:16px 0;border-bottom:1px solid var(--line-2);display:flex;gap:14px;align-items:flex-start}
+.next .ico{font-family:var(--serif);color:var(--coral);font-size:13px;line-height:1.7;flex:none;
+  letter-spacing:.06em}
+.next b{display:block;font-size:15px;font-weight:600;margin-bottom:2px}
+.next span.d{font-size:14px;color:var(--ink-3);display:block;line-height:1.5}
+
+/* card */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(26px,3.4vw,36px)}
+.field{margin-bottom:20px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:520px){.row2{grid-template-columns:1fr;gap:0}
+.row2 .field{margin-bottom:20px}}
+label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px;color:var(--ink-2)}
+label .opt{font-weight:400;color:var(--ink-3)}
+input[type=text],input[type=email],input[type=tel],textarea,select{
+  width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);background:var(--paper);
+  border:1px solid var(--line);border-radius:10px;padding:12px 14px;line-height:1.45;
+  transition:border-color .18s ease,box-shadow .18s ease;appearance:none;
+}
+textarea{resize:vertical;min-height:136px}
+input:focus,textarea:focus,select:focus{
+  outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(20,18,16,.07)}
+input::placeholder,textarea::placeholder{color:#A79C90}
+.hint{font-size:13px;color:var(--ink-3);margin:7px 0 0}
+.tel{display:grid;grid-template-columns:132px 1fr;gap:10px}
+@media(max-width:400px){.tel{grid-template-columns:110px 1fr}}
+.selwrap{position:relative}
+.selwrap::after{content:"";position:absolute;right:13px;top:50%;width:7px;height:7px;
+  margin-top:-5px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);
+  transform:rotate(45deg);pointer-events:none}
+select{padding-right:30px;cursor:pointer}
+.count{font-size:12.5px;color:var(--ink-3);text-align:right;margin:6px 0 0}
+
+/* errors */
+.err{display:none;font-size:13px;color:var(--err);margin:7px 0 0}
+.field.bad input,.field.bad textarea,.field.bad select{border-color:var(--err)}
+.field.bad .err{display:block}
+
+/* submit */
+.submit{
+  width:100%;margin-top:6px;font-family:var(--sans);font-size:16px;font-weight:500;
+  padding:15px 22px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);
+  color:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:transform .18s ease,background .2s ease,box-shadow .2s ease;
+}
+.submit:hover{background:#000;transform:translateY(-1px);box-shadow:0 8px 22px rgba(20,18,16,.16)}
+.submit:disabled{opacity:.65;cursor:default;transform:none;box-shadow:none}
+.submit .arrow{transition:transform .2s ease}
+.submit:hover .arrow{transform:translateX(3px)}
+.spin{width:15px;height:15px;border:2px solid rgba(251,248,244,.35);border-top-color:var(--cream);
+  border-radius:50%;animation:sp .7s linear infinite;display:none}
+.submit.loading .spin{display:block}
+.submit.loading .arrow,.submit.loading .lbl-go{display:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.legal{font-size:12.5px;color:var(--ink-3);margin:16px 0 0;text-align:center;line-height:1.5}
+.legal a{color:var(--ink-3)}
+.formerr{display:none;background:var(--coral-tint);border:1px solid #F0CFC4;color:#8F2F16;
+  border-radius:10px;padding:12px 14px;font-size:14px;margin:0 0 20px}
+.formerr.on{display:block}
+
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13.5px;color:var(--ink-3)}
+.foot-in{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+footer a{text-decoration:none;color:var(--ink-3)}
+footer a:hover{color:var(--coral)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html" aria-label="G&amp;B Growth, accueil">
+      <span class="mark" aria-hidden="true">G<span>&amp;</span>B</span>
+      <span><span class="word">G&amp;B Growth</span><span class="sub">Growth Operators</span></span>
+    </a>
+    <a class="back" href="index.html">← Retour au site</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="steps" aria-label="Progression">
+      <span class="step on"><span class="n">1</span>Vos informations</span>
+      <span class="step-sep" aria-hidden="true"></span>
+      <span class="step"><span class="n">2</span>Choix du créneau</span>
+    </div>
+
+    <div class="grid">
+      <div class="aside">
+        <h1>Parlons de ce qui bloque, concrètement.</h1>
+        <p class="lead">Deux minutes pour nous décrire votre situation, puis vous choisissez votre créneau. Nous arrivons à l'appel en ayant déjà regardé votre dossier.</p>
+        <ul class="next">
+          <li><span class="ico">01</span><span><b>Vous remplissez ce formulaire</b><span class="d">Ce que vous écrivez ici détermine la qualité du premier échange.</span></span></li>
+          <li><span class="ico">02</span><span><b>Vous choisissez un créneau</b><span class="d">Trente minutes, en visioconférence, dans votre fuseau horaire.</span></span></li>
+          <li><span class="ico">03</span><span><b>Nous préparons l'appel</b><span class="d">Nous regardons votre site, vos pages et ce qui est visible publiquement avant de vous parler.</span></span></li>
+          <li><span class="ico">04</span><span><b>On vous dit franchement</b><span class="d">Soit ce que nous ferions et à quelles conditions, soit que ce n'est pas pour nous.</span></span></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="formerr" id="formerr" role="alert"></div>
+          <form id="qualif" novalidate>
+
+            <div class="row2">
+              <div class="field" id="f-prenom">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" autocomplete="given-name" placeholder="Marie">
+                <p class="err" id="e-prenom">Indiquez votre prénom.</p>
+              </div>
+              <div class="field" id="f-nom">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" autocomplete="family-name" placeholder="Durand">
+                <p class="err" id="e-nom">Indiquez votre nom.</p>
+              </div>
+            </div>
+
+            <div class="field" id="f-email">
+              <label for="email">Adresse e-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="vous@votre-entreprise.com">
+              <p class="err" id="e-email">Cette adresse ne semble pas valide.</p>
+            </div>
+
+            <div class="field" id="f-tel">
+              <label for="tel">Téléphone</label>
+              <div class="tel">
+                <div class="selwrap">
+                  <select id="pays" name="pays" aria-label="Indicatif pays"></select>
+                </div>
+                <input type="tel" id="tel" name="tel" autocomplete="tel-national" inputmode="tel" placeholder="6 12 34 56 78">
+              </div>
+              <p class="err" id="e-tel">Ce numéro ne semble pas complet.</p>
+              <p class="hint" id="h-tel">Utilisé uniquement si la visioconférence ne fonctionne pas.</p>
+            </div>
+
+            <div class="field" id="f-projet">
+              <label for="projet">Votre projet</label>
+              <textarea id="projet" name="projet" maxlength="1200" placeholder="Ce que vous vendez, à qui, et ce qui bloque aujourd'hui. Quelques lignes suffisent — les chiffres aident beaucoup."></textarea>
+              <p class="err" id="e-projet">Décrivez votre situation en quelques lignes (40 caractères minimum).</p>
+              <p class="count"><span id="cnt">0</span> / 1200</p>
+            </div>
+
+            <button type="submit" class="submit" id="go">
+              <span class="spin" aria-hidden="true"></span>
+              <span class="lbl-go">Continuer vers le choix du créneau</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <p class="legal">Vos informations servent uniquement à préparer cet appel. Elles ne sont ni revendues ni cédées. <a href="mentions-legales.html">Mentions légales</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="year">2026</span> G&amp;B Growth</span>
+    <a href="mailto:gauthier.ranc@gb-growth.com">gauthier.ranc@gb-growth.com</a>
+  </div>
+</footer>
+
+<script>
+/* ==================================================================
+   RÉGLAGES
+   CALENDLY_URL  : lien du calendrier, alimenté avec les réponses.
+   FORM_ENDPOINT : optionnel. Renseigné, chaque envoi est aussi
+                   transmis là (Formspree, Web3Forms…) pour recevoir
+                   les leads même si la personne ne réserve pas.
+================================================================== */
+var CALENDLY_URL  = "https://calendly.com/gauthier-ranc-gb-growth/appel-decouverte-gb-growth";
+var FORM_ENDPOINT = "";
+
+(function () {
+  var PAYS_FREQ = [
+    ["FR","France","33"],["BE","Belgique","32"],["CH","Suisse","41"],["CA","Canada","1"],
+    ["LU","Luxembourg","352"],["MC","Monaco","377"],["ID","Indonésie","62"],["GB","Royaume-Uni","44"],
+    ["US","États-Unis","1"],["AE","Émirats arabes unis","971"]
+  ];
+  var PAYS = [
+    ["ZA","Afrique du Sud","27"],["DZ","Algérie","213"],["DE","Allemagne","49"],["AD","Andorre","376"],
+    ["AO","Angola","244"],["SA","Arabie saoudite","966"],["AR","Argentine","54"],["AM","Arménie","374"],
+    ["AU","Australie","61"],["AT","Autriche","43"],["BH","Bahreïn","973"],["BD","Bangladesh","880"],
+    ["BE","Belgique","32"],["BJ","Bénin","229"],["BY","Biélorussie","375"],["BO","Bolivie","591"],
+    ["BR","Brésil","55"],["BG","Bulgarie","359"],["BF","Burkina Faso","226"],["KH","Cambodge","855"],
+    ["CM","Cameroun","237"],["CA","Canada","1"],["CL","Chili","56"],["CN","Chine","86"],
+    ["CY","Chypre","357"],["CO","Colombie","57"],["CG","Congo","242"],["CD","Congo (RDC)","243"],
+    ["KR","Corée du Sud","82"],["CR","Costa Rica","506"],["CI","Côte d'Ivoire","225"],["HR","Croatie","385"],
+    ["DK","Danemark","45"],["EG","Égypte","20"],["AE","Émirats arabes unis","971"],["EC","Équateur","593"],
+    ["ES","Espagne","34"],["EE","Estonie","372"],["US","États-Unis","1"],["ET","Éthiopie","251"],
+    ["FI","Finlande","358"],["FR","France","33"],["GA","Gabon","241"],["GE","Géorgie","995"],
+    ["GH","Ghana","233"],["GR","Grèce","30"],["GP","Guadeloupe","590"],["GN","Guinée","224"],
+    ["GQ","Guinée équatoriale","240"],["HT","Haïti","509"],["HU","Hongrie","36"],["MU","Île Maurice","230"],
+    ["IN","Inde","91"],["ID","Indonésie","62"],["IE","Irlande","353"],["IS","Islande","354"],
+    ["IL","Israël","972"],["IT","Italie","39"],["JP","Japon","81"],["JO","Jordanie","962"],
+    ["KZ","Kazakhstan","7"],["KE","Kenya","254"],["KW","Koweït","965"],["LV","Lettonie","371"],
+    ["LB","Liban","961"],["LT","Lituanie","370"],["LU","Luxembourg","352"],["MK","Macédoine du Nord","389"],
+    ["MG","Madagascar","261"],["MY","Malaisie","60"],["ML","Mali","223"],["MT","Malte","356"],
+    ["MA","Maroc","212"],["MQ","Martinique","596"],["MX","Mexique","52"],["MD","Moldavie","373"],
+    ["MC","Monaco","377"],["NG","Nigeria","234"],["NO","Norvège","47"],["NC","Nouvelle-Calédonie","687"],
+    ["NZ","Nouvelle-Zélande","64"],["OM","Oman","968"],["PK","Pakistan","92"],["PA","Panama","507"],
+    ["PY","Paraguay","595"],["NL","Pays-Bas","31"],["PE","Pérou","51"],["PH","Philippines","63"],
+    ["PL","Pologne","48"],["PF","Polynésie française","689"],["PT","Portugal","351"],["QA","Qatar","974"],
+    ["DO","République dominicaine","1"],["RE","La Réunion","262"],["RO","Roumanie","40"],
+    ["GB","Royaume-Uni","44"],["RU","Russie","7"],["RW","Rwanda","250"],["SN","Sénégal","221"],
+    ["RS","Serbie","381"],["SG","Singapour","65"],["SK","Slovaquie","421"],["SI","Slovénie","386"],
+    ["SE","Suède","46"],["CH","Suisse","41"],["TW","Taïwan","886"],["TZ","Tanzanie","255"],
+    ["TD","Tchad","235"],["CZ","Tchéquie","420"],["TH","Thaïlande","66"],["TG","Togo","228"],
+    ["TN","Tunisie","216"],["TR","Turquie","90"],["UA","Ukraine","380"],["UY","Uruguay","598"],
+    ["VE","Venezuela","58"],["VN","Vietnam","84"]
+  ];
+
+  function flag(iso){
+    return String.fromCodePoint.apply(null, iso.toUpperCase().split("").map(function(c){
+      return 0x1F1E6 + c.charCodeAt(0) - 65;
+    }));
+  }
+  function option(p){
+    var o = document.createElement("option");
+    o.value = p[2] + "|" + p[0];
+    o.textContent = flag(p[0]) + " +" + p[2];
+    o.setAttribute("data-nom", p[1]);
+    return o;
+  }
+
+  var sel = document.getElementById("pays");
+  var g1 = document.createElement("optgroup"); g1.label = "Fréquents";
+  PAYS_FREQ.forEach(function(p){ g1.appendChild(option(p)); });
+  var g2 = document.createElement("optgroup"); g2.label = "Tous les pays";
+  PAYS.forEach(function(p){ g2.appendChild(option(p)); });
+  sel.appendChild(g1); sel.appendChild(g2);
+  sel.value = "33|FR";
+
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  var projet = document.getElementById("projet");
+  var cnt = document.getElementById("cnt");
+  projet.addEventListener("input", function(){ cnt.textContent = projet.value.length; });
+
+  function nomPays(){
+    var o = sel.options[sel.selectedIndex];
+    return o ? o.getAttribute("data-nom") : "";
+  }
+  function indicatif(){ return "+" + sel.value.split("|")[0]; }
+
+  var CHAMPS = {
+    prenom:  function(v){ return v.trim().length >= 2; },
+    nom:     function(v){ return v.trim().length >= 2; },
+    email:   function(v){ return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim()); },
+    tel:     function(v){ return v.replace(/[^0-9]/g, "").length >= 6; },
+    projet:  function(v){ return v.trim().length >= 40; }
+  };
+
+  function marque(id, ok){
+    document.getElementById("f-" + id).classList.toggle("bad", !ok);
+    var el = document.getElementById(id);
+    el.setAttribute("aria-invalid", ok ? "false" : "true");
+    return ok;
+  }
+  function verifie(id){
+    var el = document.getElementById(id);
+    return marque(id, CHAMPS[id](el.value));
+  }
+
+  Object.keys(CHAMPS).forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener("blur", function(){ if (el.value !== "") verifie(id); });
+    el.addEventListener("input", function(){
+      if (document.getElementById("f-" + id).classList.contains("bad")) verifie(id);
+    });
+  });
+
+  var form = document.getElementById("qualif");
+  var bouton = document.getElementById("go");
+  var bandeau = document.getElementById("formerr");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    bandeau.classList.remove("on");
+
+    var premier = null;
+    Object.keys(CHAMPS).forEach(function(id){
+      if (!verifie(id) && !premier) premier = id;
+    });
+    if (premier) {
+      bandeau.textContent = "Quelques champs sont à compléter avant de continuer.";
+      bandeau.classList.add("on");
+      var el = document.getElementById(premier);
+      el.focus();
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    var data = {
+      prenom:    document.getElementById("prenom").value.trim(),
+      nom:       document.getElementById("nom").value.trim(),
+      email:     document.getElementById("email").value.trim(),
+      telephone: indicatif() + " " + document.getElementById("tel").value.trim(),
+      pays:      nomPays(),
+      projet:    projet.value.trim(),
+      source:    "gb-growth.com/reserver"
+    };
+
+    bouton.classList.add("loading");
+    bouton.disabled = true;
+
+    function versCalendly(){
+      var u = new URL(CALENDLY_URL);
+      u.searchParams.set("name", data.prenom + " " + data.nom);
+      u.searchParams.set("email", data.email);
+      u.searchParams.set("a1", data.telephone);
+      u.searchParams.set("a2", data.projet);
+      u.searchParams.set("utm_source", "site");
+      window.location.href = u.toString();
+    }
+
+    if (!FORM_ENDPOINT) { versCalendly(); return; }
+
+    var fini = false;
+    var secours = setTimeout(function(){ if (!fini) { fini = true; versCalendly(); } }, 4000);
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    }).catch(function(){}).then(function(){
+      if (!fini) { fini = true; clearTimeout(secours); versCalendly(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
