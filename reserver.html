@@ -6,7 +6,9 @@
 <title>Réserver un appel — G&amp;B Growth</title>
 <meta name="description" content="Quelques informations avant de choisir votre créneau. Trente minutes pour comprendre votre situation et vous dire si nous pouvons y changer quelque chose.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141210'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23FBF8F4' text-anchor='middle'%3EG%3Ctspan fill='%23E05A3C'%3E%26%3C/tspan%3EB%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
 :root{
   --ink:#141210;--ink-2:#403931;--ink-3:#6B6157;
@@ -28,13 +30,14 @@ a{color:inherit}
 header.top{border-bottom:1px solid var(--line);background:rgba(251,248,244,.9);
   backdrop-filter:saturate(180%) blur(10px);position:sticky;top:0;z-index:20}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.brand .mark{width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--cream);
-  font-family:var(--serif);font-size:16px;display:flex;align-items:center;justify-content:center;flex:none}
-.brand .mark span{color:var(--coral)}
-.brand .word{font-family:var(--serif);font-size:18px;line-height:1}
-.brand .sub{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-3);margin-top:3px;font-weight:600}
+.brand{display:inline-flex;align-items:center;text-decoration:none}
+.brand img{width:auto;display:block}
+.brand .logo-full{height:42px}
+.brand .logo-mini{height:32px;display:none}
+@media(max-width:680px){
+  .brand .logo-full{display:none}
+  .brand .logo-mini{display:block}
+}
 .back{font-size:14.5px;color:var(--ink-3);text-decoration:none}
 .back:hover{color:var(--coral)}
 
@@ -129,10 +132,7 @@ footer a:hover{color:var(--coral)}
 
 <header class="top">
   <div class="wrap top-in">
-    <a class="brand" href="index.html" aria-label="G&amp;B Growth, accueil">
-      <span class="mark" aria-hidden="true">G<span>&amp;</span>B</span>
-      <span><span class="word">G&amp;B Growth</span><span class="sub">Growth Operators</span></span>
-    </a>
+    <a class="brand" href="index.html" aria-label="G&amp;B Growth, accueil"><img class="logo-full" src="logo-web.png" alt="G&amp;B Growth — Growth Operators" width="548" height="88"><img class="logo-mini" src="mark-web.png" alt="G&amp;B Growth" width="108" height="64"></a>
     <a class="back" href="index.html">← Retour au site</a>
   </div>
 </header>

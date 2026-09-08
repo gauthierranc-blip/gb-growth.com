@@ -13,7 +13,9 @@
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#141210">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141210'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23FBF8F4' text-anchor='middle'%3EG%3Ctspan fill='%23E05A3C'%3E%26%3C/tspan%3EB%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"G&B Growth","alternateName":"Growth Operators","url":"https://gb-growth.com/","email":"gauthier.ranc@gb-growth.com","description":"Société d'opérations de croissance : acquisition, tunnels de vente et infrastructure commerciale pour marques, formateurs et créateurs.","founder":[{"@type":"Person","name":"Gauthier Ranc"},{"@type":"Person","name":"Baptiste Tessier"}]}
 </script>
@@ -61,16 +63,14 @@ header.nav{
 }
 header.nav.scrolled{border-bottom-color:var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.brand .mark{
-  width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--cream);
-  font-family:var(--serif);font-size:16px;display:flex;align-items:center;justify-content:center;
-  letter-spacing:-.02em;flex:none;
+.brand{display:inline-flex;align-items:center;text-decoration:none}
+.brand img{width:auto;display:block}
+.brand .logo-full{height:42px}
+.brand .logo-mini{height:32px;display:none}
+@media(max-width:680px){
+  .brand .logo-full{display:none}
+  .brand .logo-mini{display:block}
 }
-.brand .mark span{color:var(--coral)}
-.brand .word{font-family:var(--serif);font-size:18px;letter-spacing:.01em;line-height:1}
-.brand .sub{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ink-3);margin-top:3px;font-weight:600}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a:not(.btn){
   font-size:14.5px;text-decoration:none;color:var(--ink-2);
@@ -218,13 +218,7 @@ html{scroll-behavior:auto}}
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="G&amp;B Growth, accueil">
-      <span class="mark" aria-hidden="true">G<span>&amp;</span>B</span>
-      <span>
-        <span class="word">G&amp;B Growth</span>
-        <span class="sub">Growth Operators</span>
-      </span>
-    </a>
+    <a class="brand" href="#top" aria-label="G&amp;B Growth, accueil"><img class="logo-full" src="logo-web.png" alt="G&amp;B Growth — Growth Operators" width="548" height="88"><img class="logo-mini" src="mark-web.png" alt="G&amp;B Growth" width="108" height="64"></a>
     <nav class="nav-links">
       <a href="#expertise" class="hide-sm">Ce que nous opérons</a>
       <a href="#methode" class="hide-sm">Méthode</a>
@@ -432,13 +426,7 @@ html{scroll-behavior:auto}}
 <footer>
   <div class="wrap foot-in">
     <div>
-      <a class="brand" href="#top" style="text-decoration:none">
-        <span class="mark" aria-hidden="true">G<span>&amp;</span>B</span>
-        <span>
-          <span class="word">G&amp;B Growth</span>
-          <span class="sub">Growth Operators</span>
-        </span>
-      </a>
+      <a class="brand" href="#top" aria-label="G&amp;B Growth, accueil"><img class="logo-full" src="logo-web.png" alt="G&amp;B Growth — Growth Operators" width="548" height="88"><img class="logo-mini" src="mark-web.png" alt="G&amp;B Growth" width="108" height="64"></a>
       <p class="copy" style="margin:18px 0 0">© <span id="year">2026</span> G&amp;B Growth. Tous droits réservés.</p>
     </div>
     <div class="foot-links">
