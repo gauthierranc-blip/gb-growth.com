@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>G&amp;B Growth — Growth Operators</title>
-<meta name="description" content="G&amp;B Growth installe et opère les systèmes d'acquisition de marques, de formateurs et de créateurs. Nous ne recommandons pas : nous exécutons.">
+<title>G&amp;B Growth — Agence de growth marketing et d'acquisition</title>
+<meta name="description" content="Stratégie marketing, tunnels de vente, publicité Meta, Google, TikTok et production de contenu. Nous construisons et opérons les systèmes qui font vendre votre business en ligne.">
 <link rel="canonical" href="https://gb-growth.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gb-growth.com/">
-<meta property="og:title" content="G&amp;B Growth — Growth Operators">
-<meta property="og:description" content="Nous installons et opérons les systèmes d'acquisition qui font passer une marque, un programme ou un créateur au palier suivant.">
+<meta property="og:title" content="G&amp;B Growth — Agence de growth marketing et d'acquisition">
+<meta property="og:description" content="Vous avez le produit. Nous construisons tout ce qui le fait vendre : stratégie, tunnels, publicité, contenu et process.">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#141210">
@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"G&B Growth","alternateName":"Growth Operators","url":"https://gb-growth.com/","logo":"https://gb-growth.com/favicon-192.png","image":"https://gb-growth.com/favicon-192.png","email":"gauthier.ranc@gb-growth.com","description":"Société d'opérations de croissance : acquisition, tunnels de vente et infrastructure commerciale pour marques, formateurs et créateurs.","founder":[{"@type":"Person","name":"Gauthier Ranc"},{"@type":"Person","name":"Baptiste Tessier"}]}
+{"@context":"https://schema.org","@type":"Organization","name":"G&B Growth","alternateName":"Growth Operators","url":"https://gb-growth.com/","logo":"https://gb-growth.com/favicon-192.png","image":"https://gb-growth.com/favicon-192.png","email":"gauthier.ranc@gb-growth.com","description":"Societe de growth operating : strategie marketing, tunnels de vente, publicite Meta, Google, TikTok et Snapchat, production de contenu, optimisation des process et audit.","knowsAbout":["Strategie marketing","Tunnel de vente","Publicite Meta Ads","Google Ads","TikTok Ads","Snapchat Ads","Production de contenu","Optimisation des process","Audit marketing"],"founder":[{"@type":"Person","name":"Gauthier Ranc"},{"@type":"Person","name":"Baptiste Tessier"}]}
 </script>
 <style>
 :root{
@@ -107,7 +107,7 @@ section{padding:clamp(64px,9vw,110px) 0}
   border-bottom:.055em solid var(--coral);padding-bottom:.04em;
   box-decoration-break:clone;-webkit-box-decoration-break:clone;
 }
-.hero h1{max-width:19ch}
+.hero h1{max-width:21ch}
 .hero .lead{max-width:56ch;margin-top:26px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;align-items:center}
 .hero-note{font-size:13.5px;color:var(--ink-3);margin:16px 0 0}
@@ -208,6 +208,19 @@ footer{padding:52px 0 44px;border-top:1px solid var(--line)}
 .foot-links{display:flex;gap:22px;flex-wrap:wrap}
 .copy{font-size:13.5px;color:var(--ink-3)}
 
+
+/* additions */
+.cards.two{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.cards.two{grid-template-columns:1fr}}
+.card .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);
+  font-weight:600;display:block;margin-bottom:14px}
+.section-note{font-size:14.5px;color:var(--ink-3);margin:30px 0 0;max-width:72ch}
+.case-link{color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(217,82,47,.4)}
+.case-link:hover{border-bottom-color:var(--coral)}
+.founder .role{margin-bottom:14px}
+.founder p{margin:0 0 .9em}
+.founder p:last-child{margin-bottom:0}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
@@ -221,7 +234,8 @@ html{scroll-behavior:auto}}
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="G&amp;B Growth, accueil"><img class="logo-full" src="logo-web.png" alt="G&amp;B Growth — Growth Operators" width="548" height="88"><img class="logo-mini" src="mark-web.png" alt="G&amp;B Growth" width="108" height="64"></a>
     <nav class="nav-links">
-      <a href="#expertise" class="hide-sm">Ce que nous opérons</a>
+      <a href="#expertise" class="hide-sm">Ce que nous faisons</a>
+      <a href="#projet" class="hide-sm">Un projet</a>
       <a href="#methode" class="hide-sm">Méthode</a>
       <a href="#fondateurs" class="hide-sm">Qui nous sommes</a>
       <a href="#rdv" class="btn sm">Réserver un appel</a>
@@ -235,36 +249,54 @@ html{scroll-behavior:auto}}
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow rv">Growth Operators</p>
-      <h1 class="rv">Nous ne conseillons pas votre croissance. Nous l'<em>opérons</em>.</h1>
-      <p class="lead rv">G&amp;B Growth prend en charge l'acquisition et les opérations commerciales de marques, de formateurs et de créateurs. Pas de recommandations à mettre en œuvre vous-même : des systèmes installés, pilotés et tenus dans la durée, avec un reporting que vous lisez en cinq minutes.</p>
+      <h1 class="rv">Vous avez le produit. Nous construisons tout ce qui le <em>fait vendre</em>.</h1>
+      <p class="lead rv">Stratégie, tunnels de vente, publicité, contenu, process. G&amp;B Growth prend en charge la partie marketing et opérationnelle de votre business en ligne — entièrement, ou seulement là où vous en avez besoin.</p>
       <div class="hero-cta rv">
         <a href="#rdv" class="btn">Réserver un appel de 30 minutes <span class="arrow">→</span></a>
-        <a href="#methode" class="btn ghost">Voir comment nous travaillons</a>
+        <a href="#expertise" class="btn ghost">Voir ce que nous faisons</a>
       </div>
-      <p class="hero-note rv">Nous prenons un nombre limité de comptes. Le premier échange sert à vérifier que nous sommes utiles — ou à vous le dire franchement.</p>
+      <p class="hero-note rv">Le premier échange sert à comprendre votre situation et à vous dire honnêtement si nous pouvons y changer quelque chose.</p>
       <div class="hero-strip rv">
-        <span><i class="dot"></i>Acquisition payante</span>
+        <span><i class="dot"></i>Meta, Google, TikTok, Snapchat</span>
         <span><i class="dot"></i>Tunnels de vente high-ticket</span>
-        <span><i class="dot"></i>Infrastructure commerciale &amp; CRM</span>
-        <span><i class="dot"></i>Monétisation de créateurs</span>
+        <span><i class="dot"></i>Production de contenu</span>
+        <span><i class="dot"></i>Équipe de closers</span>
       </div>
     </div>
   </section>
 
-  <!-- CONSTAT -->
-  <section class="band" id="constat">
-    <div class="wrap split">
-      <div class="rv">
-        <p class="eyebrow">Le constat</p>
-        <h2>Le problème est rarement la stratégie.</h2>
-        <p class="lead" style="margin-top:20px">La plupart des entreprises que nous rencontrons savent déjà ce qu'il faudrait faire. Ce qui manque, c'est quelqu'un dont c'est le métier de le faire, semaine après semaine.</p>
+  <!-- DEUX SITUATIONS -->
+  <section class="band" id="situations">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">Là où vous en êtes</p>
+        <h2>Deux points de départ, une même façon de travailler.</h2>
       </div>
-      <ul class="checklist rv">
-        <li><b>Des audits qui dorment.</b> Un consultant est passé, le document est excellent, personne ne l'a exécuté.</li>
-        <li><b>Des outils empilés.</b> Un CRM à moitié configuré, des campagnes lancées puis abandonnées, aucune vue d'ensemble.</li>
-        <li><b>Des leads qui se perdent.</b> Le trafic arrive, mais rien n'organise la qualification, la relance et la vente.</li>
-        <li><b>Un fondateur en goulot.</b> Tout passe par vous, donc rien ne monte en volume.</li>
-      </ul>
+      <div class="cards two">
+        <article class="card rv">
+          <span class="tag">Vous démarrez</span>
+          <h3>Vous avez quelque chose à vendre, mais rien autour.</h3>
+          <p>Un talent, un produit, une expertise. L'offre existe dans votre tête, ou elle se vend au coup par coup, sans rien de structuré derrière.</p>
+          <ul>
+            <li>Nous construisons l'offre et son positionnement</li>
+            <li>Nous montons le tunnel, les pages et la vente</li>
+            <li>Nous lançons l'acquisition et le contenu</li>
+            <li>Objectif : que vous puissiez en vivre</li>
+          </ul>
+        </article>
+        <article class="card rv">
+          <span class="tag">Vous plafonnez</span>
+          <h3>Votre business tourne, mais la croissance s'est arrêtée.</h3>
+          <p>Le chiffre est là. Ce qui manque, c'est ce qui permet de passer au palier suivant sans que tout repose sur vous.</p>
+          <ul>
+            <li>Nous reprenons l'acquisition et son pilotage</li>
+            <li>Nous structurons la vente et les relances</li>
+            <li>Nous optimisons les process et les outils</li>
+            <li>Objectif : monter le volume, pas la charge</li>
+          </ul>
+        </article>
+      </div>
+      <p class="section-note rv">Nous travaillons en priorité avec des business qui tournent déjà et qui cherchent un vrai soutien opérationnel. Nous accompagnons aussi des projets qui démarrent, à condition qu'ils aient le budget pour construire sérieusement.</p>
     </div>
   </section>
 
@@ -272,49 +304,100 @@ html{scroll-behavior:auto}}
   <section id="expertise">
     <div class="wrap">
       <div class="section-head rv">
-        <p class="eyebrow">Ce que nous opérons</p>
-        <h2>Trois terrains, une même façon de travailler.</h2>
+        <p class="eyebrow">Ce que nous faisons</p>
+        <h2>Toute la partie stratégique et opérationnelle.</h2>
       </div>
       <div class="cards">
         <article class="card rv">
           <span class="num">01</span>
-          <h3>Marques &amp; e-commerce</h3>
-          <p>Nous reprenons l'acquisition et les opérations d'une marque qui vend déjà, pour en faire une machine lisible et pilotable.</p>
+          <h3>Stratégie marketing</h3>
+          <p>Quoi vendre, à qui, à quel prix, et par quel chemin la personne arrive jusqu'à l'achat.</p>
           <ul>
-            <li>Campagnes Meta &amp; Google</li>
-            <li>Tunnel de conversion et pages de vente</li>
-            <li>CRM, séquences e-mail, rétention</li>
-            <li>Tableau de bord et point hebdomadaire</li>
+            <li>Positionnement et structuration de l'offre</li>
+            <li>Paliers de prix et argumentaire</li>
+            <li>Plan d'acquisition et priorités</li>
           </ul>
         </article>
         <article class="card rv">
           <span class="num">02</span>
-          <h3>Formateurs &amp; experts</h3>
-          <p>Nous construisons et opérons le dispositif qui transforme une expertise en programme premium vendu par téléphone.</p>
+          <h3>Tunnels de vente</h3>
+          <p>Du premier clic jusqu'au paiement, y compris les offres premium vendues au téléphone.</p>
           <ul>
-            <li>Structuration de l'offre et des paliers</li>
-            <li>Tunnel de qualification et prise de RDV</li>
-            <li>Scripts, scoring, suivi des appels</li>
-            <li>Recrutement et pilotage des closers</li>
+            <li>Pages de vente et de capture</li>
+            <li>Qualification et prise de rendez-vous</li>
+            <li>Tunnels high-ticket et scripts de closing</li>
           </ul>
         </article>
         <article class="card rv">
           <span class="num">03</span>
-          <h3>Créateurs</h3>
-          <p>Une audience qui ne rapporte rien est une audience sans produit. Nous créons le produit, l'infrastructure et la distribution.</p>
+          <h3>Publicité</h3>
+          <p>Meta, Google, TikTok, Snapchat. Création, structuration des comptes et pilotage au quotidien.</p>
           <ul>
-            <li>Conception de l'offre monétisable</li>
-            <li>Boutique, paiements, automatisations</li>
-            <li>Contenus de vente et lancements</li>
-            <li>Rémunération indexée sur les résultats</li>
+            <li>Conception et itération des créas</li>
+            <li>Architecture des campagnes et tests</li>
+            <li>Gestion du budget et du coût d'acquisition</li>
+          </ul>
+        </article>
+        <article class="card rv">
+          <span class="num">04</span>
+          <h3>Production de contenu</h3>
+          <p>Organique et publicitaire. Notre équipe de tournage produit ce qui alimente vos campagnes.</p>
+          <ul>
+            <li>Vidéos publicitaires et déclinaisons</li>
+            <li>Contenu organique pour réchauffer l'audience</li>
+            <li>Direction artistique et montage</li>
+          </ul>
+        </article>
+        <article class="card rv">
+          <span class="num">05</span>
+          <h3>Optimisation des process</h3>
+          <p>Ce qui fait qu'un business tient sans que tout passe par le fondateur.</p>
+          <ul>
+            <li>CRM, automatisations et suivi des leads</li>
+            <li>Organisation de l'équipe de vente</li>
+            <li>Tableaux de bord et pilotage par les chiffres</li>
+          </ul>
+        </article>
+        <article class="card rv">
+          <span class="num">06</span>
+          <h3>Audit</h3>
+          <p>Un regard extérieur sur vos comptes, vos chiffres et votre tunnel, avec un plan d'action précis.</p>
+          <ul>
+            <li>Analyse des campagnes et du tunnel</li>
+            <li>Points de perte chiffrés</li>
+            <li>Prestation ponctuelle ou point de départ</li>
           </ul>
         </article>
       </div>
+      <p class="section-note rv">Ces volets fonctionnent ensemble ou séparément. Nous nous adaptons à votre vision, à ce que vous avez déjà et à ce que vous voulez garder en interne.</p>
+    </div>
+  </section>
+
+  <!-- CAS CLIENT -->
+  <section class="band" id="projet">
+    <div class="wrap split">
+      <div class="rv">
+        <p class="eyebrow">Un projet</p>
+        <h2>D'une expertise à un business qui tourne.</h2>
+        <p class="lead" style="margin-top:20px">Javed a plus de quinze ans d'expérience dans l'événementiel. Il voulait transmettre : accompagner ceux qui veulent en vivre à organiser leur premier événement. Il avait le savoir-faire et l'envie. Rien d'autre.</p>
+        <p style="color:var(--ink-2)">Nous avons tout construit, de A à Z.</p>
+      </div>
+      <ul class="checklist rv">
+        <li><b>La formation.</b> Conçue et structurée de bout en bout à partir de son expérience.</li>
+        <li><b>Le site et l'hébergement.</b> <a class="case-link" href="https://javedvayid.com" target="_blank" rel="noopener">javedvayid.com</a></li>
+        <li><b>Un tunnel de vente high-ticket.</b> De 4 000 à 15 000 €, avec la qualification et la prise de rendez-vous.</li>
+        <li><b>Une équipe de closers.</b> Recrutée, formée et pilotée par nos soins.</li>
+        <li><b>Les campagnes Meta.</b> Des créas au pilotage quotidien du budget.</li>
+        <li><b>La publication organique.</b> Pour réchauffer l'audience avant la vente.</li>
+      </ul>
+    </div>
+    <div class="wrap">
+      <p class="section-note rv">C'est le type d'engagement que nous prenons : pas un volet isolé, tout le dispositif — jusqu'à ce que le business existe et vende.</p>
     </div>
   </section>
 
   <!-- METHODE -->
-  <section class="band" id="methode">
+  <section id="methode">
     <div class="wrap">
       <div class="section-head rv">
         <p class="eyebrow">Méthode</p>
@@ -324,42 +407,42 @@ html{scroll-behavior:auto}}
         <div class="step rv">
           <span class="idx">Temps 1</span>
           <h3>Diagnostic</h3>
-          <p>Nous ouvrons vos comptes, vos chiffres et votre tunnel. Nous en ressortons avec ce qui bloque réellement, et ce que nous engageons à corriger.</p>
+          <p>Nous ouvrons vos comptes, vos chiffres et votre tunnel. Nous en ressortons avec ce qui bloque réellement et ce que nous nous engageons à faire.</p>
         </div>
         <div class="step rv">
           <span class="idx">Temps 2</span>
-          <h3>Installation</h3>
-          <p>Offre, pages, campagnes, CRM, suivi. Nous mettons en place le dispositif complet plutôt que d'en confier des morceaux à cinq prestataires.</p>
+          <h3>Construction</h3>
+          <p>Offre, pages, campagnes, contenus, outils. Nous mettons en place le dispositif complet plutôt que d'en confier des morceaux à cinq prestataires.</p>
         </div>
         <div class="step rv">
           <span class="idx">Temps 3</span>
           <h3>Opération</h3>
-          <p>Nous tenons le dispositif au quotidien : budgets, créas, relances, ventes. Vous avez un point hebdomadaire et un tableau de bord à jour.</p>
+          <p>Nous tenons le dispositif au quotidien : budgets, créas, contenus, relances, ventes. Un point hebdomadaire et des chiffres à jour.</p>
         </div>
         <div class="step rv">
           <span class="idx">Temps 4</span>
-          <h3>Passation ou montée en charge</h3>
-          <p>Soit nous formons votre équipe et nous sortons, soit nous montons le volume. Dans les deux cas, c'est décidé avec vous, pas subi.</p>
+          <h3>Montée en charge</h3>
+          <p>Une fois que ça tourne, nous cherchons le palier suivant : ce qui peut être automatisé, délégué, ou poussé plus fort.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- DIFFERENCE -->
-  <section id="difference">
+  <section class="band" id="difference">
     <div class="wrap split">
-      <p class="pull rv">Un consultant vous remet un plan. Un opérateur vous remet des <span class="accent">résultats</span>.</p>
+      <p class="pull rv">Un consultant vous remet un plan. Un opérateur le <span class="accent">met en place</span>.</p>
       <ul class="checklist rv">
-        <li><b>Nous exécutons.</b> Nos livrables ne sont pas des présentations, ce sont des campagnes en ligne, des tunnels qui tournent et des rendez-vous dans votre agenda.</li>
-        <li><b>Deux associés, pas un service client.</b> Gauthier et Baptiste sont sur vos comptes. Il n'y a pas de junior à qui le dossier est repassé.</li>
-        <li><b>Des intérêts alignés.</b> Une partie de notre rémunération dépend de ce que nous produisons. Si ça ne marche pas, nous le sentons aussi.</li>
+        <li><b>Les deux fondateurs sur vos comptes.</b> Gauthier sur la technique et l'acquisition, Baptiste sur la stratégie et la vente. Pas de dossier repassé à un junior.</li>
+        <li><b>Une équipe complète derrière.</b> Des closers hautement qualifiés, une équipe de tournage, des spécialistes de la publicité. Vous n'avez ni à recruter, ni à coordonner cinq prestataires.</li>
+        <li><b>Des intérêts alignés.</b> Nous fonctionnons avec une mise en place, puis un pourcentage sur ce que nous vous rapportons. Ce que nous produisons nous concerne directement.</li>
         <li><b>Peu de clients à la fois.</b> Opérer prend du temps. Nous préférons refuser un compte que le tenir à moitié.</li>
       </ul>
     </div>
   </section>
 
   <!-- FONDATEURS -->
-  <section class="band" id="fondateurs">
+  <section id="fondateurs">
     <div class="wrap">
       <div class="section-head rv">
         <p class="eyebrow">Qui nous sommes</p>
@@ -368,18 +451,22 @@ html{scroll-behavior:auto}}
       <div class="founders">
         <article class="founder rv">
           <span class="name">Gauthier Ranc</span>
-          <span class="role">Co-fondateur</span>
+          <span class="role">Co-fondateur · Technique &amp; acquisition</span>
+          <p>Double diplômé ingénieur et école de commerce. Incubé à EuraTechnologies pour le développement d'un SaaS.</p>
+          <p>Spécialiste de la publicité en ligne. C'est lui qui construit les tunnels, structure les comptes publicitaires et pilote les campagnes sur l'ensemble des plateformes.</p>
         </article>
         <article class="founder rv">
           <span class="name">Baptiste Tessier</span>
-          <span class="role">Co-fondateur</span>
+          <span class="role">Co-fondateur · Stratégie &amp; vente</span>
+          <p>Entrepreneur depuis ses débuts dans le business en ligne, qu'il a construit à partir de zéro : 70 000 € générés en un an avec une audience de 7 000 abonnés.</p>
+          <p>Il a ensuite monté une structure d'accompagnement pour ceux qui se lancent. Chez G&amp;B, il porte la stratégie marketing et toute la partie vente.</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section class="band" id="faq">
     <div class="wrap" style="max-width:820px">
       <div class="section-head rv">
         <p class="eyebrow">Questions fréquentes</p>
@@ -391,20 +478,24 @@ html{scroll-behavior:auto}}
           <p>Trente minutes, sans présentation commerciale. Vous décrivez votre situation, nous posons des questions précises sur vos chiffres et votre organisation. À la fin, soit nous vous disons ce que nous ferions et sous quelles conditions, soit nous vous disons que ce n'est pas pour nous.</p>
         </details>
         <details>
-          <summary>Travaillez-vous avec tout le monde ?</summary>
-          <p>Non. Il faut une offre qui se vend déjà, au moins un peu, et un interlocuteur capable de décider vite. Nous ne prenons pas de projets qui démarrent de zéro sans produit ni audience.</p>
+          <summary>Peut-on ne vous confier qu'une partie ?</summary>
+          <p>Oui. Certains clients nous confient l'ensemble du dispositif, d'autres uniquement la publicité, les tunnels ou la production de contenu. Nous nous adaptons à ce qui existe déjà chez vous et à ce que vous préférez garder en interne.</p>
         </details>
         <details>
-          <summary>Quels sont vos tarifs ?</summary>
-          <p>Ils dépendent du périmètre : opérer une acquisition e-commerce et monter une équipe de vente ne demandent pas le même engagement. Nous fonctionnons avec une base mensuelle et une part variable liée aux résultats, chiffrée après le diagnostic.</p>
+          <summary>Comment vous rémunérez-vous ?</summary>
+          <p>En général par une mise en place au démarrage, qui couvre la construction du dispositif, puis par un pourcentage sur ce que nous rapportons. Le modèle peut s'adapter selon le périmètre. Les audits, eux, sont une prestation ponctuelle.</p>
+        </details>
+        <details>
+          <summary>Travaillez-vous avec des projets qui démarrent ?</summary>
+          <p>Oui, à condition qu'il y ait un budget pour construire. Notre cible première reste les business déjà en activité qui cherchent un soutien opérationnel, mais nous prenons des projets neufs quand le porteur a de quoi mener le chantier jusqu'au bout.</p>
         </details>
         <details>
           <summary>Sur quels engagements de durée ?</summary>
-          <p>Trois mois minimum. En dessous, l'installation est à peine terminée qu'il faut déjà conclure — ce serait vous faire payer un chantier sans jamais l'habiter.</p>
+          <p>Trois mois minimum sur un accompagnement complet. En dessous, l'installation est à peine terminée qu'il faut déjà conclure — ce serait vous faire payer un chantier sans jamais l'habiter. Un audit, lui, se fait sans engagement.</p>
         </details>
         <details>
           <summary>Comment se passe la collaboration au quotidien ?</summary>
-          <p>Entièrement à distance, avec un point hebdomadaire fixe dans votre fuseau horaire, un tableau de bord tenu à jour en continu et un canal direct pour les décisions qui ne peuvent pas attendre le point.</p>
+          <p>Entièrement à distance, avec un point hebdomadaire fixe dans votre fuseau horaire, des chiffres tenus à jour en continu et un canal direct pour les décisions qui ne peuvent pas attendre le point.</p>
         </details>
       </div>
     </div>
@@ -415,7 +506,7 @@ html{scroll-behavior:auto}}
     <div class="wrap">
       <div class="cta-block rv">
         <p class="eyebrow" style="color:#8C8177">Prendre rendez-vous</p>
-        <h2>Parlons de ce qui bloque, concrètement.</h2>
+        <h2>Parlons de votre projet, concrètement.</h2>
         <p>Trente minutes pour comprendre où vous en êtes et vous dire honnêtement si nous pouvons y changer quelque chose. Si la réponse est non, vous repartez au moins avec un avis clair.</p>
         <a href="#" class="btn" id="cta-calendar">Réserver un créneau <span class="arrow">→</span></a>
       </div>
