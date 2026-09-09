@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /reserver.html
+Disallow: /mentions-legales.html
+
+Sitemap: https://gb-growth.com/sitemap.xml
