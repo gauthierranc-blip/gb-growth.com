@@ -200,6 +200,22 @@ footer a:hover{color:var(--coral)}
               <p class="err" id="e-projet">Ce champ nous sert à préparer l'appel.</p>
             </div>
 
+            <div class="field" id="f-budget">
+              <label for="budget">Budget envisagé pour la mise en place</label>
+              <div class="selwrap">
+              <select id="budget" name="budget">
+                <option value="">Choisissez une réponse</option>
+                <option value="Moins de 1 000 €">Moins de 1 000 €</option>
+                <option value="1 000 à 3 000 €">1 000 à 3 000 €</option>
+                <option value="3 000 à 10 000 €">3 000 à 10 000 €</option>
+                <option value="Plus de 10 000 €">Plus de 10 000 €</option>
+                <option value="Pas encore défini">Pas encore défini</option>
+              </select>
+              </div>
+              <p class="err" id="e-budget">Indiquez un ordre de grandeur, même approximatif.</p>
+              <p class="hint" id="h-budget">Un ordre de grandeur suffit. Cela nous évite de vous proposer un dispositif hors de portée.</p>
+            </div>
+
             <button type="submit" class="submit" id="go">
               <span class="spin" aria-hidden="true"></span>
               <span class="lbl-go">Continuer vers le choix du créneau</span>
@@ -307,7 +323,8 @@ var WEB3FORMS_KEY = "a83ccb31-2fe6-4cd2-a349-e75ec37ecbc0";
     nom:     function(v){ return v.trim().length >= 2; },
     email:   function(v){ return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim()); },
     tel:     function(v){ return v.replace(/[^0-9]/g, "").length >= 6; },
-    projet:  function(v){ return v.trim().length > 0; }
+    projet:  function(v){ return v.trim().length > 0; },
+    budget:  function(v){ return v !== ""; }
   };
 
   function marque(id, ok){
@@ -357,6 +374,7 @@ var WEB3FORMS_KEY = "a83ccb31-2fe6-4cd2-a349-e75ec37ecbc0";
       telephone: indicatif() + " " + document.getElementById("tel").value.trim(),
       pays:      nomPays(),
       projet:    projet.value.trim(),
+      budget:    document.getElementById("budget").value,
       source:    "gb-growth.com/reserver"
     };
 
@@ -368,7 +386,7 @@ var WEB3FORMS_KEY = "a83ccb31-2fe6-4cd2-a349-e75ec37ecbc0";
       u.searchParams.set("name", data.prenom + " " + data.nom);
       u.searchParams.set("email", data.email);
       u.searchParams.set("a1", data.telephone);
-      u.searchParams.set("a2", data.projet);
+      u.searchParams.set("a2", data.projet + "\n\nBudget envisage : " + data.budget);
       u.searchParams.set("utm_source", "site");
       window.location.href = u.toString();
     }
@@ -391,6 +409,7 @@ var WEB3FORMS_KEY = "a83ccb31-2fe6-4cd2-a349-e75ec37ecbc0";
         Telephone: data.telephone,
         Pays: data.pays,
         Projet: data.projet,
+        Budget: data.budget,
         Source: data.source
       })
     }).catch(function(){}).then(function(){
